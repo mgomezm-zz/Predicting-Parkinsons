@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<!--
+    Overflow 1.1 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+            <title>Questionare Report</title>
+            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+            <meta name="description" content="" />
+            <meta name="keywords" content="" />
+            <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
+                <link rel=stylesheet href="{{ url_for('static', filename='css/skel-noscript.css') }}">
+                <link rel=stylesheet href="{{ url_for('static', filename='css/style.css') }}">
+                <link rel=stylesheet href="{{ url_for('static', filename='css/nv.d3.css') }}">
+            <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+            <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+            <script src="{{ url_for('static', filename='js/nv.d3.min.js') }}"></script>
+
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/jquery.poptrox.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+
+            <style>
+            </style>
+            <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+
+    <body>
+            <!-- Header -->
+                    <section id="header">
+                            <header>
+                                    <h1>Report</h1>
+                                    <p>Mijail Gomez</p>
+                            </header>
+                            <footer>
+                                    <a href="#report1" class="button style2 scrolly scrolly-centered">CONTINUE</a>
+                            </footer>
+                    </section>
+
+            <!-- Feature 1 -->
+                    <article id="report1" class="container box style1 right">
+                        <div class="inner">
+                            <header>
+                                <h2>SPEECH VS HAND WRITING</h2>
+                            </header>
+                            <p>Tortor faucibus ullamcorper nec tempus purus sed penatibus. Lacinia pellentesque eleifend vitae est elit tristique velit tempus etiam.</p>
+                            <footer>
+                                <a href="#report2" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+                            <div id="spch_vs_hwrt" class="image full">
+                                <svg></svg>
+                            </div>
+                        </div>
+                    </article>
+
+            <!-- Feature 2 -->
+                    <article id="report2" class="container box style1 right">
+                        <div class="inner">
+                            <header>
+                                <h2>SPEECH VS TREMOR</h2>
+                            </header>
+                            <p>Tortor faucibus ullamcorper nec tempus purus sed penatibus. Lacinia pellentesque eleifend vitae est elit tristique velit tempus etiam.</p>
+                            <div id="spch_vs_trmr" class="image full">
+                                <svg></svg>
+                            </div>
+                            <footer>
+                                <a href="#report3" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+                        </div>
+                    </article>
+
+             <!-- Feature 3 -->
+                    <article id="report3" class="container box style1 right">
+                        <div class="inner">
+                            <header>
+                                <h4>HAND WRITING VS TREMOR </h4>
+                            </header>
+                            <a> helldkjsfdkas fkasdjf dks daskfjadklsj; </a>
+                            <p>Tortor faucibus ullamcorper nec tempus purus sed penatibus. Lacinia pellentesque eleifend vitae est elit tristique velit tempus etiam.</p>
+                            <div id="hwrt_vs_trmr" class="image full">
+                                <svg></svg>
+                            </div>
+                            <footer>
+                                <a href="#end" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+                        </div>
+                    </article>
+
+            <!-- Contact -->
+                    <article id="end" class="container box style3">
+                        <header>
+                            <h1 id ="prediction"> </h1>
+                            <p>Thank you for taking the time to fill out questionare.</p>
+                        </header>
+                        <center>
+                        <a href="http://www.randomdoggiegenerator.com" >Here is a puppy.</a>
+                        </center>
+                    </article>
+
+            <!-- Links -->
+                <section id="footer">
+                        <ul class="icons">
+                                <li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+                                <li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+                                <li><a href="#" class="fa fa-google-plus solo"><span>Google+</span></a></li>
+                                <li><a href="#" class="fa fa-pinterest solo"><span>Pinterest</span></a></li>
+                                <li><a href="#" class="fa fa-dribbble solo"><span>Dribbble</span></a></li>
+                                <li><a href="http://www.linkedin.com/in/mijailgomez" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
+                        </ul>
+                        <div class="copyright">
+                                <ul class="menu">
+                                        <li>&copy; Mijail Gomez. All rights reserved.</li>
+                                        <li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+                                </ul>
+                        </div>
+                </section>
+    </body>
+            <!-- scripts -->
+            <script>
+                // Output based on the clasifers probability
+                if( parseFloat({{likelihood}}) < .75 )
+                    $("#prediction").html("Congratualations, you are ok. Move along.")
+                else if( parseFloat({{likelihood}}) < .89 )
+                    $("#prediction").html("We recommend that you see a doctor.")
+                else
+                    $("#prediction").html("Hmm, we highly recommend that you see a doctor. We need to study you.")
+
+                // D3 and nvD3.js
+                var margin = {top: 0, right: 0, bottom: 0, left: 0},
+                    width = 200 - margin.left - margin.right,
+                    height = 200 - margin.top - margin.bottom;
+
+                function schonfinkelize(fn) {
+                        var slice = Array.prototype.slice,
+                                    stored_args = slice.call(arguments, 1);
+                            return function () {
+                                        var new_args = slice.call(arguments),
+                                                            args = stored_args.concat(new_args);
+                                                return fn.apply(null, args);
+                                                    };
+                }
+                function partial(fn /*, args...*/) {
+                        var slice = Array.prototype.slice;
+                        var args = slice.call(arguments, 1);
+                        return function() { return fn.apply(this, args.concat(slice.call(arguments, 0)));};
+                }
+
+
+                var callback = function(index, name, error, data) {
+                    var u = data[index][0].axis_names[0]
+                    var v = data[index][0].axis_names[1]
+                    nv.addGraph(function() {
+                            var chart = nv.models.scatterChart()
+                            .showDistX(true)//showDist, when true, will display those little distribution lines on the axis.
+                            .showDistY(true)
+                            .sizeRange([80,200])
+                            .transitionDuration(350)
+                            .color(d3.scale.category10().range());
+
+                            //Configure how the tooltip looks.
+                            chart.tooltipContent(function(key) {
+                                return '<h3>' + key + '</h3>';
+                                });
+
+                            //Axis settings
+                            chart.xAxis.tickFormat(d3.format('.01f'));
+                            chart.xAxis.axisLabel(u)
+                            chart.yAxis.tickFormat(d3.format('.01f'));
+                            chart.yAxis.axisLabel(v).axisLabelDistance(35);
+
+                            chart.forceY([-1,11])
+                            chart.forceX([-1,11])
+
+                            d3.select('#'+name+' svg')
+                                .datum(data[index])
+                                .call(chart)
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.top + margin.bottom);
+                            nv.utils.windowResize(chart.update);
+                            return chart;
+                    });
+                }
+                d3.json("/data", partial(callback, 0, 'spch_vs_hwrt'));
+                d3.json("/data", partial(callback, 1, 'spch_vs_trmr'));
+                d3.json("/data", partial(callback, 2, 'hwrt_vs_trmr'));
+            </script>
+</html>

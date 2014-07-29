@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<!--
+    Overflow 1.1 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+            <title>Parkinson's Questionare</title>
+            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+            <meta name="description" content="" />
+            <meta name="keywords" content="" />
+            <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
+                <link rel=stylesheet href="{{ url_for('static', filename='css/skel-noscript.css') }}">
+                <link rel=stylesheet href="{{ url_for('static', filename='css/style.css') }}">
+            <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/jquery.poptrox.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+            <style>
+                .sliders{
+                    width: 25%;
+                    margin:0 auto;
+                }
+                .slider_val{
+                    margin: 0px auto;
+                    width: 50%;
+                }
+                .paragraphs{
+                    margin: 10px 5px 15px 20px;
+                }
+            </style>
+            <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+
+    <body>
+            <!-- Header -->
+                    <section id="header">
+                            <header>
+                                    <h1>Predicting Parkinson's (Prototype)</h1>
+                                    <p>Please answer the questions below. Thanks</p>
+                            </header>
+                            <footer>
+                                    <a href="#banner" class="button style2 scrolly scrolly-centered">CONTINUE</a>
+                            </footer>
+                    </section>
+
+            <!-- Banner -->
+                    <section id="banner">
+                            <header>
+                                <h2>Parkinson's</h2>
+                            </header>
+                            <p>
+                            <center>
+                            <p style="width:35em;text-indent:40px;" align="justify" >
+Parkinson's Disease (PD) is a debilitating, incurable neurodegenerative disease that affects a significant segment of the population, causing a large societal and financial burden. PD has been a focus of intensive research; however, the causes and biological mechanisms underlying the syndrome are still poorly understood, and the search for a cure continues.
+                            
+                            </p>
+                            <p style="width:35em;text-indent:40px;" align="justify">
+                                In the hope of shedding light on the roots of Parkinson's Disease, PPMI, an ongoing large clinical study, performs a wide array of investigations on Parkinson's patients and healthy controls, ranging from neurological studies to genetics and medical imaging.  The many features examined, and the large number of subjects enrolled, make PPMI data ideally suited to computational exploration.
+                            </p>
+
+                            <footer>
+                                    <a href="#article_spch" class="button style2 scrolly scrolly-centered">START</a>
+                            </footer>
+                    </section>
+
+            <!-- Feature 1 -->
+                    <article id="article_spch" class="container box style1">
+                            <div class="inner">
+                                    <header>
+                                            <h2>SPEECH</h2>
+                                    </header>
+                                    <p>Over the past week, have you had problems with your speech?</p>
+                                    <p>
+                                    <b>Normal[0]</b>: Not at all (no problems).
+                                    <b>Slight[1-3]</b>: Speech is soft, slurred or uneven, but it does not cause others to ask to repeat what is said. 
+                                    <b>Mild[4-6]</b>: Speech is sometimes not understood, but not everyday. 
+                                    <b>Moderate[7-9]</b>: Speech is unclear enough that others will ask for clarification every day, although most speech is intelligible. 
+                                    <b>Severe[10]</b>: Most or all speech cannot be understood. 
+                                    </p>
+                                    <div class="slider_spch_val" id="sldr_spch_out"></div>
+                                    <div class="slider_spch"></div>
+                            </div>
+                            <footer>
+                                    <a href="#article_hwrt" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+
+                    </article>
+
+            <!-- Feature 2 -->
+                    <article id="article_hwrt" class="container box style1">
+                            <div class="inner">
+                                    <header>
+                                            <h2>HAND WRITING</h2>
+                                    </header>
+                                    <p>Over the past week, have people usually had trouble reading your handwriting?</p>
+                                    <p>
+                                    <b>Normal[0]</b>: Not at all (no problems).
+                                    <b>Slight[1-3]</b>: Writing is slow, clumsy or uneven, but all words are clear.
+                                    <b>Mild[4-6]</b>: Some words are unclear and difficult to read.
+                                    <b>Moderate[7-9]</b>: Many words are unclear and difficult to read. 
+                                    <b>Severe[10]</b>: Most or all words cannot be read.
+                                    </p>
+                                    <div class="slider_hwrt_val" id="sldr_hwrt_out"></div>
+                                    <div class="slider_hwrt"></div>
+                            </div>
+                            <footer>
+                                    <a href="#article_trmr" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+                    </article>
+
+            <!-- Feature 3 -->
+                    <article id="article_trmr" class="container box style1">
+                            <div class="inner">
+                                    <header>
+                                            <h2>TREMOR</h2>
+                                    </header>
+                                    <p>Over the past week, have you usually had shaking or tremor?</p>
+                                    <p>
+                                    <b>Normal[0]</b>: Not at all (no problems).
+                                    <b>Slight[1-3]</b>: Shaking or tremor occurs but does not cause problems with any activities.
+                                    <b>Mild[4-6]</b>: Shaking or tremor causes problems with only a few activities.
+                                    <b>Moderate[7-9]</b>: Shaking or tremor causes problems with many daily activities.
+                                    <b>Severe[10]</b>: Shaking or tremor causes problems with most or all activities.
+                                    </p>
+                                    <div class="slider_trmr_val" id="sldr_trmr_out"></div>
+                                    <div class="slider_trmr"></div>
+                            </div>
+                            <footer>
+                                    <a href="#done" class="button style2 scrolly scrolly-centered">NEXT</a>
+                            </footer>
+                    </article>
+
+
+            <!-- done -->
+                    <article id="done" class="container box style3">
+                            <div class="inner">
+                                <header>
+                                    <h2>Done?</h2>
+                                </header>
+                                    <p>Rhoncus mattis egestas sed fusce sodales rutrum et etiam ullamcorper. Etiam egestas scelerisque ac duis magna lorem ipsum dolor.</p>
+                            </div>
+                            <form action="/results" method="GET">
+                                <input type="hidden" id="submit_val_id" name="submit_val">
+                                <!-- <input type="submit" class="button style3 scrolly scrolly-centered"> -->
+                                <footer>
+                                    <a id="submitting" href="#results" class="button style3 scrolly scrolly-centered" onclick="$('#submit_val_id').val($('#sldr_spch_out').text()+'/t'+$('#sldr_hwrt_out').text()+'/t'+$('#sldr_trmr_out').text());$(this).closest('form').submit();return false;">SUBMIT</a>
+                                </footer>
+                            </form>
+                    </article>
+
+
+            <!-- Contact -->
+                    <article id="end" class="container box style3">
+                            <header>
+                                    <h2>Contact Infomration</h2>
+                                    <p>Still in Progress</p>
+                            </header>
+
+                            <form>
+                                            <div class="row half">
+                                            <div class="6u"><input type="text" class="text" name="name" placeholder="Name" /></div>
+                                            <div class="6u"><input type="text" class="text" name="email" placeholder="Email" /></div>
+                                    </div>
+                                    <div class="row half">
+                                            <div class="12u">
+                                                    <textarea name="message" placeholder="Message"></textarea>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="12u">
+                                                    <ul class="actions">
+                                                            <li><a href="#" class="button form">Send Message</a></li>
+                                                    </ul>
+                                            </div>
+                                    </div>
+                            </form>
+
+                    </article>
+            
+            <section id="footer">
+                    <ul class="icons">
+                            <li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
+                            <li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+                            <li><a href="#" class="fa fa-google-plus solo"><span>Google+</span></a></li>
+                            <li><a href="#" class="fa fa-pinterest solo"><span>Pinterest</span></a></li>
+                            <li><a href="#" class="fa fa-dribbble solo"><span>Dribbble</span></a></li>
+                            <li><a href="http://www.linkedin.com/in/mijailgomez" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
+                    </ul>
+                    <div class="copyright">
+                            <ul class="menu">
+                                    <li>&copy; Mijail Gomez. All rights reserved.</li>
+                                    <li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+                            </ul>
+                    </div>
+            </section>
+    </body>
+
+    <script src="{{ url_for('static', filename='js/jquery.nouislider.min.js') }}"></script>
+    <link rel=stylesheet href="{{ url_for('static', filename='css/jquery.nouislider.css') }}">
+    <script>
+            $(function(){
+                $('.slider_spch').noUiSlider({
+                    start: 0,
+                    step: 1,
+                    behaviour: 'extend-tap',
+                    connect: "lower",
+                    range: {
+                        'min': 0,
+                        'max': 10
+                    },
+                    serialization: {
+                            lower: [
+                                $.Link({
+                                    target: $("#sldr_spch_out")
+                                })
+                            ],
+                            format: {decimals: 0}
+                    }
+                });
+            });
+            $(function(){
+                $('.slider_hwrt').noUiSlider({
+                    start: 0,
+                    step: 1,
+                    behaviour: 'extend-tap',
+                    connect: "lower",
+                    range: {
+                        'min': 0,
+                        'max': 10
+                    },
+                    serialization: {
+                            lower: [
+                                $.Link({
+                                    target: $("#sldr_hwrt_out")
+                                })
+                            ],
+                            format: {decimals: 0}
+                    }
+                });
+            });
+            $(function(){
+                    $('.slider_trmr').noUiSlider({
+                        start: 0,
+                        step: 1,
+                        behaviour: 'extend-tap',
+                        connect: "lower",
+                        range: {
+                            'min': 0,
+                            'max': 10
+                        },
+                        serialization: {
+                                lower: [
+                                    $.Link({
+                                        target: $("#sldr_trmr_out")
+                                    })
+                                ],
+                                format: {decimals: 0}
+                        }
+                    });
+                });
+    </script>
+
+</html>
