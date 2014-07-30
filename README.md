@@ -12,17 +12,17 @@ Improve on a well known method to diagnose Parkinson’s. More specifically usin
 ## PROJECT DESCRIPTION
 A widely used method to diagnose Parkinson's involves an expensive SPECT brain DaTSCAN. This procedure basically measures dopamine level. Out of the patients who have been diagnosed with early Parkinson's there exist a group called Scans Without Evidence of Dopaminergic Deficit (SWEDD). These patients experience symptoms of Parkinson's but fail to show a low level of dopamine. This means that using a DaTSCAN to identity SWEDD patients is not possible. Therefore, I decided to explore the PPMI database and possibly find predictors that can identify SWEDD subjects.
 
-#### steps·
+#### steps
 * Background Research
-* ETL, on massive horizontal data.·
+* ETL, on massive horizontal data
 * Data directories(each directories had about 4 data files and each file on average had about 50 variables):
-    * DaTSCAN, MRI measurements·
+    * DaTSCAN, MRI measurements
     * FMRI, MRI, SPECT Image Data
     * Bio-Specimen Reconciliation
     * Neurological Exam
     * Medical History
     * Subject Characteristics
-    * Clinical Assessments·
+    * Clinical Assessments
     * FMRI, MRI, SPECT Image Data
     * Subject Characteristics
 * EDA, logistic regression on DaTSCAN features. Obviously not good at classifying SWEDD vs control (HC).
@@ -36,8 +36,7 @@ Using machine learning and various techniques for data analysis found a cheap, n
 #### generate_simpe_model.py
 The Motor assessment has thirteen questions. To attract users, the model has been simplified to three questions. Using variable importance selected the most import features. Below is the CLI interface to this model generator. You can check model performance, plot ROC curves, run multi-class classification, and save your model. After trying out out different machine learning models found out that Random Forest had a higher ROC than Logistic, but no significant improvements over Extremely Randomized Trees or Gradient Tree Boosting.
 
-Usage:
----------------
+####Usage
 
     usage: generate_simple_model.py [-h] [-patient_file PATIENT_FILE]
                                     [-data_file DATA_FILE]
