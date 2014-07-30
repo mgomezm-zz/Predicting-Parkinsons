@@ -7,15 +7,15 @@ Predicting-Parkinson's
 [Zipfian](http://www.zipfianacademy.com/) and [Bayes Impact](http://www.bayesimpact.org/) project. Using PPMI data funded by the Michale J. Fox Foundation.
 
 ## GOAL
-Improve on a well known method to diagnose Parkinson’s. More specifically using machine learning find predictor variables that can classify against a subtype of Parkinson's (SWEDD).
+Improve on a well known method to diagnose Parkinson’s. More specifically, using machine learning find predictor variables that can classify against a subtype of Parkinson's (SWEDD).
 
-## PROJECT DESCRIPTION
-A widely used method to diagnose Parkinson's involves an expensive SPECT brain DaTSCAN. This procedure basically measures dopamine level. Out of the patients who have been diagnosed with early Parkinson's there exist a group called Scans Without Evidence of Dopaminergic Deficit (SWEDD). These patients experience symptoms of Parkinson's but fail to show a low level of dopamine. This means that using a DaTSCAN to identity SWEDD patients is not possible. Therefore, I decided to explore the PPMI database and possibly find predictors that can identify SWEDD subjects.
+## DESCRIPTION
+A widely used method to diagnose Parkinson's involves an expensive SPECT brain DaTSCAN. This procedure basically measures dopamine level. Parkinson's is identified on subjects who have a low dopamine level. Out of the patients who have been diagnosed with early Parkinson's (based on other clinical tests) there exists a group called Scans Without Evidence of Dopaminergic Deficit (SWEDD). These patients experience symptoms of Parkinson's but fail to show a low level of dopamine. This means that using a DaTSCAN to identity SWEDD patients is not possible. Therefore, I decided to explore the PPMI database and possibly find predictors that can identify SWEDD subjects.
 
 #### steps
 * Background Research
 * ETL, on massive horizontal data
-* Data directories(each directories had about 4 data files and each file on average had about 50 variables):
+* Data directories (each directory had about 4 data files and each file on average had about 50 variables):
     * DaTSCAN, MRI measurements
     * FMRI, MRI, SPECT Image Data
     * Bio-Specimen Reconciliation
@@ -34,7 +34,9 @@ A widely used method to diagnose Parkinson's involves an expensive SPECT brain D
 Using machine learning and various techniques for data analysis found a cheap, non-invasive method to classify Parkinson's. In fact this model outperforms using DaTSCAN. Based on this outcome created a web app for early detection of Parkinson's.
 
 #### generate_simpe_model.py
-The Motor assessment has thirteen questions. To attract users, the model has been simplified to three questions. Using variable importance selected the most import features. Below is the CLI interface to this model generator. You can check model performance, plot ROC curves, run multi-class classification, and save your model. After trying out out different machine learning models found out that Random Forest had a higher ROC than Logistic, but no significant improvements over Extremely Randomized Trees or Gradient Tree Boosting.
+The Motor assessment has 13 questions. In order to attract more users, the model has been simplified to use only 3 questions. Using variable importance, selected the most import features. 
+
+Below is the CLI interface to this model generator. You can check model performance, plot ROC curves, run multi-class classification, and save your model. After trying out out different machine learning models found out that Random Forest had a higher ROC than Logistic, but no significant improvements over Extremely Randomized Trees or Gradient Tree Boosting.
 
 ####Usage
 
