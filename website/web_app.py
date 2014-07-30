@@ -42,7 +42,7 @@ def results():
 
     #classify current user, parkinson prob
     prob = final_model.predict_proba(map(lambda x: (x*4)/10., names_values.values())).squeeze()[1]
-    print "probability = ", prob
+    #print "probability = ", prob
     return render_template('results.html', likelihood = prob)#, prediction=prediction)
 
 @app.route("/data")
@@ -99,5 +99,5 @@ if __name__ == '__main__':
         d2 = {"key":"HC", "values": get_locations(xcol1, ycol2, True), "axis_names":[ax_val[u], ax_val[v]]}
         dout.append([d1, d2])
 
-    app.debug = True
+    #app.debug = True
     app.run(host="0.0.0.0", port=80)
