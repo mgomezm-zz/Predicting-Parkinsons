@@ -89,7 +89,7 @@ S'NL\x7f6\x96\x9d\x00@\x91\xde\xd1(\x93x\xfd?kj\xdd\xba*X\x11@\xb9\x84\xa7^\xf5\
 tbsS'_enc'
 p26
 g1
-(csklearn.preprocessing.label
+(csklearn.preprocessing
 LabelEncoder
 p27
 g3

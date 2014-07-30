@@ -68,6 +68,7 @@ def main(CONFIG):
 
     df['label'] = df.PATNO.apply(lambda x: patient_class.get(x, np.nan))
     df = df.dropna()
+    df = df.drop("PATNO",1)
 
     if CONFIG.multiclass:
         classes = ("PD", "SWEDD", "HC")
