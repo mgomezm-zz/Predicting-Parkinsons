@@ -24,10 +24,10 @@ def results():
     if request.args:
         answers = request.args['submit_val'].split('/t')
         names_values = {n:float(v) for n,v in zip(col_names, answers)}
-        print "received input"
+        #print "received input"
     else:
         names_values = {n:0 for n in col_names}
-        print "empty"
+        #print "empty"
 
     print names_values
 
@@ -42,7 +42,7 @@ def results():
 
     #classify current user, parkinson prob
     prob = final_model.predict_proba(map(lambda x: (x*4)/10., names_values.values())).squeeze()[1]
-    print "probability = ", prob
+    #print "probability = ", prob
     return render_template('results.html', likelihood = prob)#, prediction=prediction)
 
 @app.route("/data")
@@ -57,17 +57,38 @@ def get_locations(col1, col2, jitter = False):
     else:
         return [{"x":x, "y":y } for x,y in zip(col1, col2)]
 
+def read_data(col_names):
+    try:
+        df_status = pd.read_csv("./../data/Patient_Status.csv")[['PATNO', 'ENROLL_CAT']]
+    except IOError:
+        print "Error: can\'t find file or read patient status data file"
+    patient_class = dict(df_status.dropna().values)
+
+    try:
+        df = pd.read_csv("./../data/MDS_UPDRS_Part_II__Patient_Questionnaire.csv")
+    except IOError:
+        print "Error: can\'t find file or read motor assessment data file"
+    df = df[df.EVENT_ID == "BL"][["PATNO"] +list(col_names)]
+    df['label'] = df.PATNO.apply(lambda x: patient_class.get(x, np.nan))
+    df = df.dropna() 
+    df = df.drop("PATNO",1)
+    return df
+
 if __name__ == '__main__':
     global final_model
     global col_names
     global dout
 
+    # unpickle model
+    with open('./../model/Parkinson_two_class.model', 'rb') as fr:
+        final_model = pickle.loads(fr.read())
+
     col_names = (u'NP2SPCH', u'NP2HWRT', u'NP2TRMR')
-    #loading data
-    N = 150
     dout = []
+
+    N = 150
+    df = read_data(col_names)
     ax_val = {'NP2SPCH':'Speech', 'NP2HWRT':'Hand Writing', 'NP2TRMR':'Tremor'}
-    df = pd.read_csv("./../data/ppmi.csv")
     for v,u in combinations(col_names,2):
         xcol1 = choice(df[(df.label == "PD") | (df.label == "SWEDD")][[u]].values.squeeze(), N)
         ycol2 = choice(df[(df.label == "PD") | (df.label == "SWEDD")][[v]].values.squeeze(), N)
@@ -77,10 +98,6 @@ if __name__ == '__main__':
         ycol2 = choice(df[df.label == "HC"][[v]].values.squeeze(), N)
         d2 = {"key":"HC", "values": get_locations(xcol1, ycol2, True), "axis_names":[ax_val[u], ax_val[v]]}
         dout.append([d1, d2])
-
-    # unpickle model
-    with open('./../model/Parkinson_two_class.model', 'rb') as fr:
-        final_model = pickle.loads(fr.read())
 
     #app.debug = True
     app.run(host="0.0.0.0", port=80)
