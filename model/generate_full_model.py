@@ -55,6 +55,7 @@ def main(CONFIG):
         df_status = pd.read_csv(CONFIG.patient_file)[['PATNO', 'ENROLL_CAT']]
     except IOError:
         print "Error: can\'t find file or read patient file"
+        raise IOError
 
     patient_class = dict(df_status.dropna().values)
 
@@ -62,12 +63,14 @@ def main(CONFIG):
         df_smell = pd.read_csv(CONFIG.smell_data_file)
     except IOError:
         print "Error: can\'t find file or read smell data file"
+        raise IOError
     df_smell = df_smell[['PATNO',"UPSITBK1","UPSITBK2","UPSITBK3","UPSITBK4"]]
 
     try:
         df_rem = pd.read_csv(CONFIG.rem_data_file)
     except IOError:
         print "Error: can\'t find file or read rem data file"
+        raise IOError
     df_rem = df_rem[df_rem.EVENT_ID == "BL"]
     df_rem = df_rem[["PATNO","PTCGBOTH","DRMVIVID","DRMAGRAC","DRMNOCTB",
                     "SLPLMBMV","SLPINJUR","DRMVERBL","DRMFIGHT","DRMUMV",
@@ -79,6 +82,7 @@ def main(CONFIG):
         df_UPDRSII = pd.read_csv(CONFIG.motor_data_file)
     except IOError:
         print "Error: can\'t find file or read motor data file"
+        raise IOError
     df_UPDRSII = df_UPDRSII[df_UPDRSII.EVENT_ID == "BL"]
     df_UPDRSII  = df_UPDRSII[["PATNO", "NP2SPCH","NP2HWRT","NP2TRMR"]]
 
