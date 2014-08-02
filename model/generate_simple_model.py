@@ -55,6 +55,7 @@ def main(CONFIG):
         df_status = pd.read_csv(CONFIG.patient_file)[['PATNO', 'ENROLL_CAT']]
     except IOError:
         print "Error: can\'t find file or read patient file"
+        raise IOError
 
     patient_class = dict(df_status.dropna().values)
 
@@ -62,6 +63,7 @@ def main(CONFIG):
         df_UPDRSII = pd.read_csv(CONFIG.data_file)
     except IOError:
         print "Error: can\'t find file or read data file"
+        raise IOError
 
     df_UPDRSII = df_UPDRSII[df_UPDRSII.EVENT_ID == "BL"]
     df = df_UPDRSII[["PATNO", "NP2SPCH","NP2HWRT","NP2TRMR"]]
